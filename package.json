@@ -1,5 +1,5 @@
 {
-  "name": "with-typescript",
+  "name": "todo-app",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
@@ -8,9 +8,12 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "autoprefixer": "^10.1.0",
     "next": "latest",
+    "postcss": "^8.2.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",
