@@ -1,18 +1,17 @@
-import React from 'react'
 import Link from 'next/link'
 
-import { User } from '../interfaces'
+import { Task } from '../interfaces'
 
 type Props = {
-  data: User
+  data: Task
 }
 
 const ListItem = ({ data }: Props) => (
-  <Link href="/users/[id]" as={`/users/${data.id}`}>
+  <Link href="/task/[id]" as={`/task/${data._id}`}>
     <a>
-      {data.id}: {data.name}
+      {data._id}: {data.name}
     </a>
   </Link>
 )
 
-export default ListItem
+export default ListItem;

@@ -2,9 +2,11 @@
 // and then use them in any component by importing them. For
 // example, to import the interface below do:
 //
-// import User from 'path/to/interfaces';
 
-export type User = {
-  id: number
+export type Task = {
+  _id: string
   name: string
+  completed: boolean
+  createdDate: Date
+  __v: number
 }
