@@ -4,10 +4,10 @@ type ListDetailProps = {
   item: Task
 }
 
-const ListDetail = ({ item: Task }: ListDetailProps) => (
+const ListDetail = ({ item }: ListDetailProps) => (
   <div>
-    <h1>Detail for {Task.name}</h1>
-    <p>ID: {Task._id}</p>
+    <h1>Detail for {item.name}</h1>
+    <p>ID: {item._id}</p>
   </div>
 )
 
