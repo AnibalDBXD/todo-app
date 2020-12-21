@@ -1,13 +1,13 @@
+import { useState } from 'react';
 import { Task } from '../interfaces';
 
 import { GetStaticProps } from "next";
 import config from "../config.json";
 import axios from 'axios';
 
-import Link from 'next/link';
+import TaskList from "../components/TaskList";
 import Layout from '../components/Layout';
 import InputPost from "../components/InputPost";
-import { useState } from 'react';
 
 type Props = {
   items: Task[]
@@ -37,15 +37,7 @@ const IndexPage = ({ items, errors }: Props) => {
   return (
     <Layout title="Home | Next.js + TypeScript">
       <InputPost Tasks={Tasks} setTasks={setTasks} />
-      <ul>
-        {Tasks.map((task) => (
-          <Link key={task._id} href={`/task/${task._id}`}>
-            <li>
-              <a>{task.name}</a>
-            </li>
-          </Link>
-        ))}
-      </ul>
+      <TaskList Tasks={Tasks} />
     </Layout>
   )
 }
