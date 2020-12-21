@@ -1,11 +1,29 @@
-import { GetStaticProps } from "next";
 import { Task } from '../interfaces';
+
+import { GetStaticProps } from "next";
+import config from "../config.json";
+import axios from 'axios';
+
+import { FormEvent, useRef } from 'react';
+
 import Link from 'next/link';
 import Layout from '../components/Layout';
+import InputPost from "../components/InputPost";
 
 export type Props = {
   items?: Task[]
   errors?: string
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const items = (await axios.get(config.URL)).data.data;
+    return {
+      props: { items }
+    }
+  } catch (errors) {
+    return { props: { errors } }
+  }
 }
 
 const IndexPage = ({ items, errors }: Props) => {
@@ -16,6 +34,7 @@ const IndexPage = ({ items, errors }: Props) => {
   )
   return (
     <Layout title="Home | Next.js + TypeScript">
+      <InputPost />
       <ul>
         {items?.map((task) => (
           <Link key={task._id} href={`/task/${task._id}`}>
@@ -29,13 +48,4 @@ const IndexPage = ({ items, errors }: Props) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const res = await fetch(`https://todo-app-api-gamma.herokuapp.com/todo/`);
-    const items = await res.json();
-    return { props: { items: items.data } }
-  } catch (err) {
-    return { props: { errors: err.message } }
-  }
-}
-export default IndexPage
+export default IndexPage;
