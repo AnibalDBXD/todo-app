@@ -19,7 +19,6 @@ export type Props = {
 export const getServerSideProps: GetServerSideProps = async ({ query: { id } }) => {
   try {
     const item = (await axios.get(`${config.URL}/${id}`)).data.data;
-    console.log(item);
     return {
       props: { item }
     }
