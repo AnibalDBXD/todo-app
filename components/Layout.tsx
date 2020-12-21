@@ -14,7 +14,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header className="bg-gray-300 h-auto">
+    <header className="h-auto ">
       <nav className="text-xl py-4 ml-5">
         <Link href="/">
           <a>Home</a>
@@ -24,6 +24,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
           <a>About</a>
         </Link>
       </nav>
+      <hr />
     </header>
     {children}
   </div>
