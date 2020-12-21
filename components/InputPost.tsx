@@ -1,7 +1,13 @@
 import { FormEvent, useRef } from "react";
 import axios from "axios";
+import { Task } from '../interfaces';
 
-const InputPost = () => {
+type Props = {
+    Tasks: Task[]
+    setTasks: Function
+}
+
+const InputPost = ({ Tasks, setTasks }: Props) => {
     const input = useRef<HTMLInputElement | null>(null)
 
     const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
@@ -10,7 +16,7 @@ const InputPost = () => {
         axios.post("https://todo-app-api-gamma.herokuapp.com/todo", {
             name,
             completed: false
-        }).then((response) => console.log(response));
+        }).then((response) => setTasks([...Tasks, response.data.data]));
     }
     return (
         <form className="text-center" onSubmit={handleSubmit}>

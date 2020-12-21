@@ -4,14 +4,13 @@ import { GetStaticProps } from "next";
 import config from "../config.json";
 import axios from 'axios';
 
-import { FormEvent, useRef } from 'react';
-
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import InputPost from "../components/InputPost";
+import { useState } from 'react';
 
-export type Props = {
-  items?: Task[]
+type Props = {
+  items: Task[]
   errors?: string
 }
 
@@ -27,6 +26,9 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const IndexPage = ({ items, errors }: Props) => {
+
+  const [Tasks, setTasks] = useState(items);
+
   if (errors) (
     <Layout title="Error! | Next.js + TypeScript">
       <h1>Error!: {errors}</h1>
@@ -34,9 +36,9 @@ const IndexPage = ({ items, errors }: Props) => {
   )
   return (
     <Layout title="Home | Next.js + TypeScript">
-      <InputPost />
+      <InputPost Tasks={Tasks} setTasks={setTasks} />
       <ul>
-        {items?.map((task) => (
+        {Tasks.map((task) => (
           <Link key={task._id} href={`/task/${task._id}`}>
             <li>
               <a>{task.name}</a>
