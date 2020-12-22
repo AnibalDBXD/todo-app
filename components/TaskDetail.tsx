@@ -1,9 +1,9 @@
-import { Task } from "../interfaces"
-import Delete from "./icons/Delete"
+import { Task } from "../interfaces";
+import Delete from "./icons/Delete";
 import Colors from "../utils/Colors";
 
 const TaskDetail = ({ _id, name, completed, createdDate }: Task) => {
-    const date = new Date(createdDate)
+    const date = new Date(createdDate);
     const LastDigit = date.getMilliseconds().toString().split('').pop();
     const NumberForColor = Math.floor(Number(LastDigit) / 2);
     return (
@@ -28,7 +28,7 @@ const TaskDetail = ({ _id, name, completed, createdDate }: Task) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default TaskDetail
+export default TaskDetail;

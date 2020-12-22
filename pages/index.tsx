@@ -12,18 +12,18 @@ import InputPost from "../components/InputPost";
 type Props = {
   items: Task[]
   errors?: string
-}
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const items = (await axios.get(config.URL)).data.data;
     return {
       props: { items }
-    }
+    };
   } catch (errors) {
     return { props: { errors } }
-  }
-}
+  };
+};
 
 const IndexPage = ({ items, errors }: Props) => {
 
@@ -33,13 +33,13 @@ const IndexPage = ({ items, errors }: Props) => {
     <Layout title="Error! | Next.js + TypeScript">
       <h1>Error!: {errors}</h1>
     </Layout>
-  )
+  );
   return (
     <Layout title="Home | Next.js + TypeScript">
       <InputPost Tasks={Tasks} setTasks={setTasks} />
       <TaskList Tasks={Tasks} />
     </Layout>
-  )
-}
+  );
+};
 
 export default IndexPage;

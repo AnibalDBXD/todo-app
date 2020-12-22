@@ -9,4 +9,4 @@ export type Task = {
   completed: boolean
   createdDate: string
   __v: number
-}
+};

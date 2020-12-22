@@ -23,8 +23,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { id } }) 
     }
   } catch (errors) {
     return { props: { errors } }
-  }
-}
+  };
+};
 
 const OneTask = ({ item, errors }: Props) => {
   if (errors) (

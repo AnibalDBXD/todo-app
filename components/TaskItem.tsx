@@ -1,11 +1,11 @@
-import Link from "next/link"
+import Link from "next/link";
 import { Task } from "../interfaces";
 import Colors from "../utils/Colors";
 
 type Props = {
     task: Task
     date: Date
-}
+};
 
 const TaskItem = ({ task, date }: Props) => {
     const LastDigit = date.getMilliseconds().toString().split('').pop();
@@ -18,7 +18,7 @@ const TaskItem = ({ task, date }: Props) => {
                 <p>{`${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`}</p>
             </a>
         </Link>
-    )
-}
+    );
+};
 
-export default TaskItem
+export default TaskItem;
