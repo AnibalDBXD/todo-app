@@ -7,6 +7,6 @@ export type Task = {
   _id: string
   name: string
   completed: boolean
-  createdDate: Date
+  createdDate: string
   __v: number
 }

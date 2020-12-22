@@ -1,21 +1,19 @@
-
-import Link from 'next/link';
 import { Task } from "../interfaces";
+import TaskItem from "./TaskItem"
 
 type Props = {
     Tasks: Task[]
 }
 const TaskList = ({ Tasks }: Props) => {
     return (
-        <ul>
-            {Tasks.map((task) => (
-                <Link key={task._id} href={`/task/${task._id}`}>
-                    <li>
-                        <a>{task.name}</a>
-                    </li>
-                </Link>
-            ))}
-        </ul>
+        <div className="flex flex-wrap -mx-1 overflow-hidden p-5 justify-center">
+            {Tasks.map((task) => {
+                const date = new Date(task.createdDate)
+                return (
+                    <TaskItem key={task._id} task={task} date={date} />
+                )
+            })}
+        </div>
     )
 }
 
