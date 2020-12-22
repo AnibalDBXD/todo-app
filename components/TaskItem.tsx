@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Task } from "../interfaces";
+import Colors from "../utils/Colors";
 
 type Props = {
     task: Task
@@ -7,13 +8,6 @@ type Props = {
 }
 
 const TaskItem = ({ task, date }: Props) => {
-    const Colors = [
-        "bg-blue-500",
-        "bg-red-500",
-        "bg-green-500",
-        "bg-yellow-500",
-        "bg-indigo-500"
-    ]
     const LastDigit = date.getMilliseconds().toString().split('').pop();
     const NumberForColor = Math.floor(Number(LastDigit) / 2);
 
