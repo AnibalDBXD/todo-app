@@ -4,12 +4,11 @@ import { GetServerSideProps } from "next";
 import axios from "axios";
 import config from "../../config.json";
 
-
+import TaskDetail from "../../components/TaskDetail";
 import Layout from '../../components/Layout';
-import ListDetail from '../../components/ListDetail';
 
 export type Props = {
-  item?: Task
+  item: Task
   errors?: string
 };
 
@@ -40,7 +39,7 @@ const OneTask = ({ item, errors }: Props) => {
       title={`${item ? item.name : 'Task Detail'
         } | Next.js + TypeScript Example`}
     >
-      {item && <ListDetail item={item} />}
+      <TaskDetail {...item} />
     </Layout>
   );
 };
