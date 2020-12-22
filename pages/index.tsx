@@ -30,12 +30,12 @@ const IndexPage = ({ items, errors }: Props) => {
   const [Tasks, setTasks] = useState(items);
 
   if (errors) (
-    <Layout title="Error! | Next.js + TypeScript">
+    <Layout title="Error! | TODO-APP">
       <h1>Error!: {errors}</h1>
     </Layout>
   );
   return (
-    <Layout title="Home | Next.js + TypeScript">
+    <Layout title="Home | TODO-APP">
       <InputPost Tasks={Tasks} setTasks={setTasks} />
       <TaskList Tasks={Tasks} />
     </Layout>

@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { id } }) 
 
 const OneTask = ({ item, errors }: Props) => {
   if (errors) (
-    <Layout title="Error | Next.js + TypeScript Example">
+    <Layout title="Error | TODO-APP">
       <p>
         <span style={{ color: 'red' }}>Error:</span> {errors}
       </p>
@@ -37,7 +37,7 @@ const OneTask = ({ item, errors }: Props) => {
   return (
     <Layout
       title={`${item ? item.name : 'Task Detail'
-        } | Next.js + TypeScript Example`}
+        } | TODO-APP`}
     >
       <TaskDetail {...item} />
     </Layout>
