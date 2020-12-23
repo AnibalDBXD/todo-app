@@ -1,6 +1,8 @@
 import { FormEvent, useRef } from "react";
-import axios from "axios";
 import { Task } from '../interfaces';
+
+import axios from "axios";
+import config from "../config.json";
 
 type Props = {
     Tasks: Task[]
@@ -13,7 +15,7 @@ const InputPost = ({ Tasks, setTasks }: Props) => {
     const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
         const name = input.current?.value;
         evt.preventDefault();
-        axios.post("https://todo-app-api-gamma.herokuapp.com/todo", {
+        axios.post(config.URL, {
             name,
             completed: false
         }).then((response) => setTasks([...Tasks, response.data.data]));
