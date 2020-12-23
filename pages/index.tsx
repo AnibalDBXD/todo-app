@@ -8,7 +8,7 @@ import axios from 'axios';
 import TaskList from "../components/TaskList";
 import Layout from '../components/Layout';
 import InputPost from "../components/InputPost";
-import CompleteTaskList from '../components/CompletedTaskList';
+import CompletedTaskList from '../components/CompletedTaskList';
 
 type Props = {
   items: Task[]
@@ -27,8 +27,11 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const IndexPage = ({ items, errors }: Props) => {
+  const IncompletedTask = items.filter((task) => task.completed !== true);
 
-  const [Tasks, setTasks] = useState(items);
+  const CompletedTask = items.filter((task) => task.completed);
+
+  const [Tasks, setTasks] = useState(IncompletedTask);
 
   if (errors) (
     <Layout title="Error! | TODO-APP">
@@ -38,9 +41,9 @@ const IndexPage = ({ items, errors }: Props) => {
   return (
     <Layout title="Home | TODO-APP">
       <InputPost Tasks={Tasks} setTasks={setTasks} />
-      <TaskList Tasks={Tasks} />
+      <TaskList Tasks={IncompletedTask} />
       <hr />
-      <CompleteTaskList Tasks={Tasks} />
+      <CompletedTaskList Tasks={CompletedTask} />
     </Layout>
   );
 };
