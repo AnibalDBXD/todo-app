@@ -3,7 +3,12 @@ import Delete from "./icons/Delete";
 import Colors from "../utils/Colors";
 import { FormEvent, useRef, useState } from "react";
 
+import axios from "axios";
+import config from "../config.json";
+import { useRouter } from "next/router";
+
 const TaskDetail = ({ _id, name, completed, createdDate }: Task) => {
+    const route = useRouter();
 
     const [Checked, setChecked] = useState(completed);
 
@@ -12,14 +17,29 @@ const TaskDetail = ({ _id, name, completed, createdDate }: Task) => {
 
     const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
-        console.log(Input.current?.value);
-        console.log(CheckBox.current?.checked);
+        const data = {
+            _id,
+            name: Input.current?.value,
+            completed: CheckBox.current?.checked,
+        }
+        axios.put(config.URL, data)
+            .then(() => route.back())
+            .then(() => alert("Change made succes"))
+            .catch(() => alert("An error has occurred"));
+    };
+
+    const handleDelete = () => {
+        axios.delete(`${config.URL}/${_id}`)
+            .then(() => route.back())
+            .then(() => alert("Change made succes"))
+            .catch(() => alert("An error has occurred"));
     };
 
     //Background color
     const date = new Date(createdDate);
     const LastDigit = date.getMilliseconds().toString().split('').pop();
     const NumberForColor = Math.floor(Number(LastDigit) / 2);
+
     return (
         <form action="" onSubmit={handleSubmit}>
             <div className="flex justify-center content-center">
@@ -41,7 +61,7 @@ const TaskDetail = ({ _id, name, completed, createdDate }: Task) => {
                     <br />
                     <div className="flex justify-between my-2">
                         <button className="bg-blue-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded mx-2 my-auto" type="submit">Change</button>
-                        <button className="mx-2 my-auto h-5 w-5"><Delete /></button>
+                        <button className="mx-2 my-auto h-5 w-5" type="button" onClick={handleDelete}><Delete /></button>
                     </div>
                 </div>
             </div>
