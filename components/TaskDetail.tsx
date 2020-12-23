@@ -45,13 +45,13 @@ const TaskDetail = ({ _id, name, completed, createdDate }: Task) => {
             <div className="flex justify-center content-center">
                 <div className={`${Colors[NumberForColor]} rounded-xl my-5 mx-1 p-4 w-1/3 overflow-hidden xl:w-1/4`}>
                     <p className="font-light text-gray-300">ID: {_id}</p>
-                    <div className="flex justify-between my-2">
+                    <div className="block justify-between my-2">
                         <input ref={Input} className="text-black text-lg my-auto" defaultValue={name}></input>
-                        <div className="my-auto block">
+                        <div className="my-2 block">
                             <p>
-                                {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}
+                                {`Created Date: ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}
                             </p>
-                            <p>{`${date.getHours()}:${date.getMinutes()}`}</p>
+                            <p>{`Created Hour: ${date.getHours()}:${date.getMinutes()}`}</p>
                         </div>
                     </div>
                     <div className="my-2">
