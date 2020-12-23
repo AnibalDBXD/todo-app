@@ -41,7 +41,7 @@ const IndexPage = ({ items, errors }: Props) => {
   return (
     <Layout title="Home | TODO-APP">
       <InputPost Tasks={Tasks} setTasks={setTasks} />
-      <TaskList Tasks={IncompletedTask} />
+      <TaskList Tasks={Tasks} />
       <hr />
       <CompletedTaskList Tasks={CompletedTask} />
     </Layout>
