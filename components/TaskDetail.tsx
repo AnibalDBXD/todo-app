@@ -49,7 +49,7 @@ const TaskDetail = ({ _id, name, completed, createdDate }: Task) => {
                         <input ref={Input} className="text-black text-lg my-auto" defaultValue={name}></input>
                         <div className="my-auto block">
                             <p>
-                                {`${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`}
+                                {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}
                             </p>
                             <p>{`${date.getHours()}:${date.getMinutes()}`}</p>
                         </div>
