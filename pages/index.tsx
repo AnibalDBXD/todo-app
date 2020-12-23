@@ -8,6 +8,7 @@ import axios from 'axios';
 import TaskList from "../components/TaskList";
 import Layout from '../components/Layout';
 import InputPost from "../components/InputPost";
+import CompleteTaskList from '../components/CompletedTaskList';
 
 type Props = {
   items: Task[]
@@ -38,6 +39,8 @@ const IndexPage = ({ items, errors }: Props) => {
     <Layout title="Home | TODO-APP">
       <InputPost Tasks={Tasks} setTasks={setTasks} />
       <TaskList Tasks={Tasks} />
+      <hr />
+      <CompleteTaskList Tasks={Tasks} />
     </Layout>
   );
 };
