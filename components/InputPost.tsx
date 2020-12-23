@@ -23,7 +23,7 @@ const InputPost = ({ Tasks, setTasks }: Props) => {
     return (
         <form className="text-center my-4" onSubmit={handleSubmit}>
             <input className="bg-gray-100 w-6/12 h-10 px-5 pr-10 rounded-full text-sm focus:outline-none" ref={input} placeholder="add details" />
-            <button className="absolute -mx-12 mt-3 mr-4" type="submit">POST</button>
+            <button className="-ml-14 font-medium" type="submit">POST</button>
         </form>
     );
 };
