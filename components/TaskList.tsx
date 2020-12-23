@@ -6,7 +6,7 @@ type Props = {
 }
 const TaskList = ({ Tasks }: Props) => {
     return (
-        <div className="flex flex-wrap -mx-1 overflow-hidden p-5 justify-center">
+        <div className="flex flex-wrap overflow-hidden p-5 justify-center">
             {Tasks.map((task) => {
                 const date = new Date(task.createdDate)
                 return (
