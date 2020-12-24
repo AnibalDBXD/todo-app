@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Task } from '../interfaces';
 
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import config from "../config.json";
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ type Props = {
   errors?: string
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const items = (await axios.get(config.URL)).data.data;
     return {
