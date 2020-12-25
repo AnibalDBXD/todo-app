@@ -1,15 +1,27 @@
-import Link from 'next/link';
 import Layout from '../components/Layout';
+
+import Github from "../components/icons/Github"
 
 const AboutPage = () => (
   <Layout title="About | TODO-APP">
-    <h1>About</h1>
-    <p>This is the about page</p>
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
+    <div className="flex justify-center">
+      <ul className="text-center">
+        <li className="py-5 font-semibold text-xl">
+          <a href="https://github.com/AnibalDBXD/todo-app" target="about_blank">
+            <Github />
+            <br />
+            Code
+          </a>
+        </li>
+        <li className="py-5 font-semibold text-xl">
+          <a href="https://github.com/9gustin/todo-app-api" target="about_blank">
+            <Github />
+            <br />
+            API
+            </a>
+        </li>
+      </ul>
+    </div>
   </Layout>
 );
 
